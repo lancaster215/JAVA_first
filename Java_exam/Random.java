@@ -69,33 +69,29 @@ public class Random {
 	}
 	
 	public void toDiamond(ArrayList<Integer> num, ArrayList<Integer> num2, int max) {
-		Random rand = new Random();
 		int[] firstHalf = null;
-		Object[] halfSpace = null;
-		Object[] halfSpace1 = null;
-		for(int x = 0, y = rand.orderAsc(num, max).size(); x < rand.orderAsc(num, max).size(); x++, y--) {
-			if(x == 0) { // to fill the top part of the first half
-				firstHalf = new int[1];
-			}else {
-				firstHalf = new int[x*2]; //exponential size of array to create a diamond shape
+		int[] secondHalf = null;
+		
+		for(int x = 0; x <= max-1; x++) {
+			for(int z = 1; z <= max-x; z++) {
+				System.out.print(" ");
 			}
-			halfSpace = new Object[y];
-			Arrays.fill(halfSpace, " ");
-			Arrays.fill(firstHalf, rand.orderAsc(num, max).get(x));
-			System.out.println(Arrays.toString(halfSpace) + Arrays.toString(firstHalf));
+			secondHalf = new int[x*2];
+			for(int z = 0; z <= secondHalf.length; z++) {
+				System.out.print(num2.get(x));
+			}
+			System.out.print("\n");
 		}
 		
-		for(int x = num2.size()-2, y = 2; 0 < num2.size(); x--,y++) {
-			int[] secondHalf;
-			if(x == 0) { //to fill the bottom part of the second half
-				secondHalf = new int[1];
-			}else {
-				secondHalf = new int[x*2];
+		for(int x = max-2; x >= 0; x--) {
+			for(int z = 1; z <= max-x; z++) {
+				System.out.print(" ");
 			}
-			halfSpace1 = new Object[y];
-			Arrays.fill(halfSpace1, " ");
-			Arrays.fill(secondHalf, num2.get(x));
-			System.out.println(Arrays.toString(halfSpace1) + Arrays.toString(secondHalf));
+			firstHalf = new int[x*2];
+			for(int z = 0; z <= firstHalf.length; z++) {
+				System.out.print(num.get(x));
+			}
+			System.out.print("\n");
 		}
 	}
 	
